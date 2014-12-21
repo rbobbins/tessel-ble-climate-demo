@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5AFD17C31A466D4E00214E54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17C21A466D4E00214E54 /* main.m */; };
+		5AFD17C61A466D4E00214E54 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17C51A466D4E00214E54 /* AppDelegate.m */; };
+		5AFD17C91A466D4E00214E54 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17C81A466D4E00214E54 /* ViewController.m */; };
+		5AFD17CC1A466D4E00214E54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD17CA1A466D4E00214E54 /* Main.storyboard */; };
+		5AFD17CE1A466D4E00214E54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD17CD1A466D4E00214E54 /* Images.xcassets */; };
+		5AFD17D11A466D4E00214E54 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD17CF1A466D4E00214E54 /* LaunchScreen.xib */; };
+		5AFD17DD1A466D4E00214E54 /* tessel_ble_climateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17DC1A466D4E00214E54 /* tessel_ble_climateTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5AFD17D71A466D4E00214E54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AFD17B51A466D4E00214E54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5AFD17BC1A466D4E00214E54;
+			remoteInfo = "tessel-ble-climate";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5AFD17BD1A466D4E00214E54 /* tessel-ble-climate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tessel-ble-climate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AFD17C11A466D4E00214E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AFD17C21A466D4E00214E54 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5AFD17C41A466D4E00214E54 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5AFD17C51A466D4E00214E54 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5AFD17C71A466D4E00214E54 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5AFD17C81A466D4E00214E54 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5AFD17CB1A466D4E00214E54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5AFD17CD1A466D4E00214E54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5AFD17D01A466D4E00214E54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5AFD17D61A466D4E00214E54 /* tessel-ble-climateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tessel-ble-climateTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AFD17DB1A466D4E00214E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AFD17DC1A466D4E00214E54 /* tessel_ble_climateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tessel_ble_climateTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5AFD17BA1A466D4E00214E54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AFD17D31A466D4E00214E54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5AFD17B41A466D4E00214E54 = {
+			isa = PBXGroup;
+			children = (
+				5AFD17BF1A466D4E00214E54 /* tessel-ble-climate */,
+				5AFD17D91A466D4E00214E54 /* tessel-ble-climateTests */,
+				5AFD17BE1A466D4E00214E54 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5AFD17BE1A466D4E00214E54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5AFD17BD1A466D4E00214E54 /* tessel-ble-climate.app */,
+				5AFD17D61A466D4E00214E54 /* tessel-ble-climateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5AFD17BF1A466D4E00214E54 /* tessel-ble-climate */ = {
+			isa = PBXGroup;
+			children = (
+				5AFD17C41A466D4E00214E54 /* AppDelegate.h */,
+				5AFD17C51A466D4E00214E54 /* AppDelegate.m */,
+				5AFD17C71A466D4E00214E54 /* ViewController.h */,
+				5AFD17C81A466D4E00214E54 /* ViewController.m */,
+				5AFD17CA1A466D4E00214E54 /* Main.storyboard */,
+				5AFD17CD1A466D4E00214E54 /* Images.xcassets */,
+				5AFD17CF1A466D4E00214E54 /* LaunchScreen.xib */,
+				5AFD17C01A466D4E00214E54 /* Supporting Files */,
+			);
+			path = "tessel-ble-climate";
+			sourceTree = "<group>";
+		};
+		5AFD17C01A466D4E00214E54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5AFD17C11A466D4E00214E54 /* Info.plist */,
+				5AFD17C21A466D4E00214E54 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5AFD17D91A466D4E00214E54 /* tessel-ble-climateTests */ = {
+			isa = PBXGroup;
+			children = (
+				5AFD17DC1A466D4E00214E54 /* tessel_ble_climateTests.m */,
+				5AFD17DA1A466D4E00214E54 /* Supporting Files */,
+			);
+			path = "tessel-ble-climateTests";
+			sourceTree = "<group>";
+		};
+		5AFD17DA1A466D4E00214E54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5AFD17DB1A466D4E00214E54 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5AFD17BC1A466D4E00214E54 /* tessel-ble-climate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AFD17E01A466D4E00214E54 /* Build configuration list for PBXNativeTarget "tessel-ble-climate" */;
+			buildPhases = (
+				5AFD17B91A466D4E00214E54 /* Sources */,
+				5AFD17BA1A466D4E00214E54 /* Frameworks */,
+				5AFD17BB1A466D4E00214E54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tessel-ble-climate";
+			productName = "tessel-ble-climate";
+			productReference = 5AFD17BD1A466D4E00214E54 /* tessel-ble-climate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5AFD17D51A466D4E00214E54 /* tessel-ble-climateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AFD17E31A466D4E00214E54 /* Build configuration list for PBXNativeTarget "tessel-ble-climateTests" */;
+			buildPhases = (
+				5AFD17D21A466D4E00214E54 /* Sources */,
+				5AFD17D31A466D4E00214E54 /* Frameworks */,
+				5AFD17D41A466D4E00214E54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5AFD17D81A466D4E00214E54 /* PBXTargetDependency */,
+			);
+			name = "tessel-ble-climateTests";
+			productName = "tessel-ble-climateTests";
+			productReference = 5AFD17D61A466D4E00214E54 /* tessel-ble-climateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5AFD17B51A466D4E00214E54 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Rachel Bobbins";
+				TargetAttributes = {
+					5AFD17BC1A466D4E00214E54 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					5AFD17D51A466D4E00214E54 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 5AFD17BC1A466D4E00214E54;
+					};
+				};
+			};
+			buildConfigurationList = 5AFD17B81A466D4E00214E54 /* Build configuration list for PBXProject "tessel-ble-climate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5AFD17B41A466D4E00214E54;
+			productRefGroup = 5AFD17BE1A466D4E00214E54 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5AFD17BC1A466D4E00214E54 /* tessel-ble-climate */,
+				5AFD17D51A466D4E00214E54 /* tessel-ble-climateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5AFD17BB1A466D4E00214E54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AFD17CC1A466D4E00214E54 /* Main.storyboard in Resources */,
+				5AFD17D11A466D4E00214E54 /* LaunchScreen.xib in Resources */,
+				5AFD17CE1A466D4E00214E54 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AFD17D41A466D4E00214E54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5AFD17B91A466D4E00214E54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AFD17C91A466D4E00214E54 /* ViewController.m in Sources */,
+				5AFD17C61A466D4E00214E54 /* AppDelegate.m in Sources */,
+				5AFD17C31A466D4E00214E54 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AFD17D21A466D4E00214E54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AFD17DD1A466D4E00214E54 /* tessel_ble_climateTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5AFD17D81A466D4E00214E54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5AFD17BC1A466D4E00214E54 /* tessel-ble-climate */;
+			targetProxy = 5AFD17D71A466D4E00214E54 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5AFD17CA1A466D4E00214E54 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AFD17CB1A466D4E00214E54 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5AFD17CF1A466D4E00214E54 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AFD17D01A466D4E00214E54 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5AFD17DE1A466D4E00214E54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5AFD17DF1A466D4E00214E54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5AFD17E11A466D4E00214E54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "tessel-ble-climate/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5AFD17E21A466D4E00214E54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "tessel-ble-climate/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5AFD17E41A466D4E00214E54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "tessel-ble-climateTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tessel-ble-climate.app/tessel-ble-climate";
+			};
+			name = Debug;
+		};
+		5AFD17E51A466D4E00214E54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "tessel-ble-climateTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tessel-ble-climate.app/tessel-ble-climate";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5AFD17B81A466D4E00214E54 /* Build configuration list for PBXProject "tessel-ble-climate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AFD17DE1A466D4E00214E54 /* Debug */,
+				5AFD17DF1A466D4E00214E54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5AFD17E01A466D4E00214E54 /* Build configuration list for PBXNativeTarget "tessel-ble-climate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AFD17E11A466D4E00214E54 /* Debug */,
+				5AFD17E21A466D4E00214E54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5AFD17E31A466D4E00214E54 /* Build configuration list for PBXNativeTarget "tessel-ble-climateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AFD17E41A466D4E00214E54 /* Debug */,
+				5AFD17E51A466D4E00214E54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5AFD17B51A466D4E00214E54 /* Project object */;
+}

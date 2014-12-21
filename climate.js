@@ -12,11 +12,15 @@ var bleLib = require('ble-ble113a')
 var climate = climatelib.use(tessel.port['B']);
 var ble = bleLib.use(tessel.port['A']);
 
+console.log(bleLib.profile);
+
 ble.on('ready', function(err) {
 	if (err) {
 		return console.log(err);
 	} 
 	console.log('Connected to ble113a. ');
+
+
 	ble.startAdvertising();
 });
 	
