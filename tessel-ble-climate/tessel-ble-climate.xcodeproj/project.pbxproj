@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A6326D71A474EED00B7E1C9 /* TesselBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6326D61A474EED00B7E1C9 /* TesselBluetoothManager.m */; };
 		5AFD17C31A466D4E00214E54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17C21A466D4E00214E54 /* main.m */; };
 		5AFD17C61A466D4E00214E54 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17C51A466D4E00214E54 /* AppDelegate.m */; };
 		5AFD17C91A466D4E00214E54 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17C81A466D4E00214E54 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A6326D51A474EED00B7E1C9 /* TesselBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TesselBluetoothManager.h; sourceTree = "<group>"; };
+		5A6326D61A474EED00B7E1C9 /* TesselBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TesselBluetoothManager.m; sourceTree = "<group>"; };
 		5AFD17BD1A466D4E00214E54 /* tessel-ble-climate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tessel-ble-climate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFD17C11A466D4E00214E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AFD17C21A466D4E00214E54 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				5AFD17CD1A466D4E00214E54 /* Images.xcassets */,
 				5AFD17CF1A466D4E00214E54 /* LaunchScreen.xib */,
 				5AFD17C01A466D4E00214E54 /* Supporting Files */,
+				5A6326D51A474EED00B7E1C9 /* TesselBluetoothManager.h */,
+				5A6326D61A474EED00B7E1C9 /* TesselBluetoothManager.m */,
 			);
 			path = "tessel-ble-climate";
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A6326D71A474EED00B7E1C9 /* TesselBluetoothManager.m in Sources */,
 				5AFD17C91A466D4E00214E54 /* ViewController.m in Sources */,
 				5AFD17C61A466D4E00214E54 /* AppDelegate.m in Sources */,
 				5AFD17C31A466D4E00214E54 /* main.m in Sources */,
