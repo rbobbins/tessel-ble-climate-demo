@@ -8,16 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
+@class CBCentralManager;
+@class CBPeripheral;
+@protocol CBCentralManagerDelegate;
+
+
 @protocol TesselBluetoothManagerDelegate <NSObject>
 @required
 - (void)didTurnOnBluetooth;
 
 @end
 
-@interface TesselBluetoothManager : NSObject
+@interface TesselBluetoothManager : NSObject <CBCentralManagerDelegate>
 
 @property (weak, nonatomic) id<TesselBluetoothManagerDelegate> delegate;
+@property (nonatomic, readonly) CBPeripheral *peripheral;
 
+
+- (instancetype)init __attribute__((unavailable("Use initWithCBCentralManager: instead")));
+- (instancetype)initWithCBCentralManager:(CBCentralManager *)cbCentralManager;
 - (void)scanAndConnectToTessel;
 
 @end

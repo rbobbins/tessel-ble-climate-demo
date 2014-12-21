@@ -21,7 +21,8 @@ static NSString *kTesselBLEAdvertisingServiceUUID = @"D752C5FB-1380-4CD5-B0EF-CA
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.bluetoothManager = [[TesselBluetoothManager alloc] init];
+    CBCentralManager *centralManager = [[CBCentralManager alloc] initWithDelegate:nil queue:nil];
+    self.bluetoothManager = [[TesselBluetoothManager alloc] initWithCBCentralManager:centralManager];
     self.bluetoothManager.delegate = self;
 }
 - (IBAction)didTapScanButton:(id)sender {

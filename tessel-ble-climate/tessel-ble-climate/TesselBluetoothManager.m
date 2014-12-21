@@ -22,11 +22,12 @@ static NSString *kTesselCharacteristicUUID = @"883F1E6B-76F6-4DA1-87EB-6BDBDB617
 
 @implementation TesselBluetoothManager
 
-- (instancetype)init
+- (instancetype)initWithCBCentralManager:(CBCentralManager *)cbCentralManager
 {
     self = [super init];
     if (self) {
-        self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+        self.centralManager = cbCentralManager;
+        self.centralManager.delegate = self;
     }
     return self;
 }
@@ -54,6 +55,7 @@ static NSString *kTesselCharacteristicUUID = @"883F1E6B-76F6-4DA1-87EB-6BDBDB617
         self.peripheral = peripheral;
         self.peripheral.delegate = self;
         [self.centralManager connectPeripheral:peripheral options:nil];
+        [self.centralManager stopScan];
         NSLog(@"================> %@", @"Discovered your Tessel");
     } else {
         NSLog(@"================> Discovered non-Tessel peripheral: %@", peripheral.name);
