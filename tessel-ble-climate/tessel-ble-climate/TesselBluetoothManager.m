@@ -72,10 +72,26 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 #pragma mark - <CBCentralManagerDelegate>
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
+    NSString *state;
+    switch (central.state) {
+        case CBCentralManagerStatePoweredOff: state = @"CBCentralManagerStatePoweredOff"; break;
+        case CBCentralManagerStatePoweredOn: state = @"CBCentralManagerStatePoweredOn"; break;
+        case CBCentralManagerStateResetting: state = @"CBCentralManagerStateResetting"; break;
+        case CBCentralManagerStateUnauthorized: state = @"CBCentralManagerStateUnauthorized"; break;
+        case CBCentralManagerStateUnsupported: state = @"CBCentralManagerStateUnsupported"; break;
+        case CBCentralManagerStateUnknown: state = @"CBCentralManagerStateUnknown"; break;
+    }
+    [self log:[NSString stringWithFormat:@"Central bluetooth manager updated state: %@", state]];
+    
     if (central.state == CBCentralManagerStatePoweredOn) {
         [self.delegate didTurnOnBluetooth];
+    } else {
+        /* Via Apple:
+            A state with a value lower than CBCentralManagerStatePoweredOn implies that scanning has stopped and that any connected peripherals have been disconnected
+         */
+        self.status = TesselBluetoothStatusDisconnected;
     }
-    [self log:[NSString stringWithFormat:@"Central bluetooth manager updated state: %d", central.state]];
+
 }
 
 - (void)centralManager:(CBCentralManager *)central
@@ -177,8 +193,6 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 #pragma mark - Private
 
 - (void)log:(NSString *)message {
-    NSLog(message);
-    
     NSString *timestamp = [self.timestampFormatter stringFromDate:[NSDate date]];
     message = [NSString stringWithFormat:@"%@: %@", timestamp, message];
     [self.logHistory addObject:message];
