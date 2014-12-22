@@ -17,9 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhl-RF-vGB">
-                                <rect key="frame" x="53" y="28" width="130" height="51"/>
-                                <color key="backgroundColor" red="0.80000001192092896" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhl-RF-vGB">
+                                <rect key="frame" x="16" y="28" width="130" height="51"/>
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="BpR-j9-ieq"/>
                                     <constraint firstAttribute="height" constant="51" id="TGh-Vb-kT6"/>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lL5-sD-xyI" userLabel="Temperature Container">
-                                <rect key="frame" x="16" y="81" width="280" height="158"/>
+                                <rect key="frame" x="16" y="87" width="280" height="158"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igf-QR-JEm">
                                         <rect key="frame" x="120" y="80" width="40" height="58"/>
@@ -69,7 +69,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fsr-jm-aes" userLabel="Humidity Container">
-                                <rect key="frame" x="304" y="81" width="280" height="158"/>
+                                <rect key="frame" x="304" y="87" width="280" height="158"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpK-bU-ZfZ">
                                         <rect key="frame" x="120" y="80" width="40" height="58"/>
@@ -92,17 +92,35 @@
                                     <constraint firstItem="P8Z-4M-v12" firstAttribute="centerX" secondItem="IpK-bU-ZfZ" secondAttribute="centerX" id="bwi-ua-aOv"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9C-xY-hTl">
+                                <rect key="frame" x="154" y="27" width="130" height="51"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="B9Q-g3-enV"/>
+                                    <constraint firstAttribute="width" constant="130" id="qrA-9h-MkU"/>
+                                </constraints>
+                                <state key="normal" title="Kill Connection">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapKillButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uD9-Kv-hHD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lL5-sD-xyI" firstAttribute="top" secondItem="Fsr-jm-aes" secondAttribute="top" id="5Se-Gm-s3J"/>
                             <constraint firstItem="lL5-sD-xyI" firstAttribute="height" secondItem="Fsr-jm-aes" secondAttribute="height" id="87b-sS-i9B"/>
+                            <constraint firstItem="uhl-RF-vGB" firstAttribute="height" secondItem="j9C-xY-hTl" secondAttribute="height" id="Bn6-As-bJh"/>
+                            <constraint firstItem="j9C-xY-hTl" firstAttribute="leading" secondItem="uhl-RF-vGB" secondAttribute="trailing" constant="8" id="CwE-zh-2UM"/>
+                            <constraint firstItem="uhl-RF-vGB" firstAttribute="width" secondItem="j9C-xY-hTl" secondAttribute="width" id="D6Y-YJ-7OZ"/>
                             <constraint firstItem="uhl-RF-vGB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="VBe-YH-CCL"/>
                             <constraint firstItem="Fsr-jm-aes" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="gia-F7-a0W"/>
-                            <constraint firstItem="uhl-RF-vGB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="37" id="hfm-JW-vID"/>
+                            <constraint firstItem="uhl-RF-vGB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hfm-JW-vID"/>
+                            <constraint firstItem="uhl-RF-vGB" firstAttribute="top" secondItem="j9C-xY-hTl" secondAttribute="top" id="hlX-jC-bs1"/>
                             <constraint firstItem="lL5-sD-xyI" firstAttribute="width" secondItem="Fsr-jm-aes" secondAttribute="width" id="o8I-af-Bw7"/>
                             <constraint firstItem="lL5-sD-xyI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pGc-Qn-qv1"/>
-                            <constraint firstItem="lL5-sD-xyI" firstAttribute="top" secondItem="uhl-RF-vGB" secondAttribute="bottom" constant="2" id="u5b-pM-cc2"/>
+                            <constraint firstItem="lL5-sD-xyI" firstAttribute="top" secondItem="uhl-RF-vGB" secondAttribute="bottom" constant="8" symbolic="YES" id="u5b-pM-cc2"/>
                             <constraint firstItem="Fsr-jm-aes" firstAttribute="leading" secondItem="lL5-sD-xyI" secondAttribute="trailing" constant="8" id="x9H-lT-gFk"/>
                         </constraints>
                     </view>
@@ -110,6 +128,7 @@
                         <outlet property="connectionStatusLabel" destination="krg-LT-rku" id="BjM-Xw-f2A"/>
                         <outlet property="currentHumidityLabel" destination="IpK-bU-ZfZ" id="9pQ-04-vIC"/>
                         <outlet property="currentTemperatureLabel" destination="Igf-QR-JEm" id="EV8-q1-AhL"/>
+                        <outlet property="killButton" destination="j9C-xY-hTl" id="gr1-zQ-TeW"/>
                         <outlet property="scanButton" destination="uhl-RF-vGB" id="xFZ-ul-m0f"/>
                     </connections>
                 </viewController>

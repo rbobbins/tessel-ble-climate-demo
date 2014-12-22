@@ -44,6 +44,7 @@ typedef NS_ENUM(NSUInteger, TesselBluetoothStatus) {
 - (instancetype)init __attribute__((unavailable("Use initWithCBCentralManager: instead")));
 - (instancetype)initWithCBCentralManager:(CBCentralManager *)cbCentralManager;
 - (void)scanAndConnectToTessel;
+- (void)killConnection;
 
 
 @end

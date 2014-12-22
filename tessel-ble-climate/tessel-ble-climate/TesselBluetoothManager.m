@@ -44,6 +44,18 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
     [self.centralManager scanForPeripheralsWithServices:nil options:nil];
 }
 
+- (void)killConnection
+{
+    
+    self.status = TesselBluetoothStatusDisconnected;
+    [self.centralManager stopScan];
+    if (self.peripheral) {
+        [self.centralManager cancelPeripheralConnection:self.peripheral];
+    }
+
+    [self log:@"USER EVENT: cancelled existing peripheral connections and stopped scanning"];
+}
+
 
 #pragma mark - <CBCentralManagerDelegate>
 
@@ -51,7 +63,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
     if (central.state == CBCentralManagerStatePoweredOn) {
         [self.delegate didTurnOnBluetooth];
     }
-    [self log:[NSString stringWithFormat:@"Central bluetooth manager updated state: %ld", central.state]];
+    [self log:[NSString stringWithFormat:@"Central bluetooth manager updated state: %d", central.state]];
 }
 
 - (void)centralManager:(CBCentralManager *)central
@@ -88,6 +100,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
     self.status = TesselBluetoothStatusDisconnected;
     [self log:[NSString stringWithFormat:@"Lost connection to Tessel: %@", (error ?: @"No error to note")]];
 }
+
 
 #pragma mark - <CBPeripheralDelegate>
 

@@ -12,6 +12,7 @@
 
 @interface ViewController () <TesselBluetoothManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
+@property (weak, nonatomic) IBOutlet UIButton *killButton;
 @property (weak, nonatomic) IBOutlet UILabel *currentTemperatureLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentHumidityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *connectionStatusLabel;
@@ -38,6 +39,10 @@
     [self.bluetoothManager scanAndConnectToTessel];
 }
 
+- (IBAction)didTapKillButton:(id)sender {
+    [self.bluetoothManager killConnection];
+}
+
 #pragma mark - <TesselBluetoothManager>
 
 - (void)didTurnOnBluetooth {
@@ -56,6 +61,25 @@
 
 - (void)didChangeTesselConnectionStatus {
     self.connectionStatusLabel.text = [TesselBluetoothManager descriptionForStatus:self.bluetoothManager.status];
+    switch (self.bluetoothManager.status) {
+        case TesselBluetoothStatusDiscovered:
+        case TesselBluetoothStatusScanning:
+        case TesselBluetoothStatusConnected:
+        {
+            self.scanButton.enabled = NO;
+            self.killButton.enabled = YES;
+            break;
+        }
+        case TesselBluetoothStatusDisconnected:
+        case TesselBluetoothStatusConnectionFailed:
+        {
+            self.scanButton.enabled = YES;
+            self.killButton.enabled = NO;
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 
