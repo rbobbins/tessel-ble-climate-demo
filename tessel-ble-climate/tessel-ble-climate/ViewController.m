@@ -10,12 +10,13 @@
 #import "TesselBluetoothManager.h"
 
 
-@interface ViewController () <TesselBluetoothManagerDelegate>
+@interface ViewController () <TesselBluetoothManagerDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
 @property (weak, nonatomic) IBOutlet UIButton *killButton;
 @property (weak, nonatomic) IBOutlet UILabel *currentTemperatureLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentHumidityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *connectionStatusLabel;
+@property (weak, nonatomic) IBOutlet UITableView *logTableView;
 @property (nonatomic) TesselBluetoothManager *bluetoothManager;
 @property (nonatomic) NSNumberFormatter *numberFormatter;
 @end
@@ -42,6 +43,13 @@
 - (IBAction)didTapKillButton:(id)sender {
     [self.bluetoothManager killConnection];
 }
+- (IBAction)didTapClearButton:(id)sender {
+    [self.bluetoothManager clearLogHistory];
+    [self.logTableView reloadData];
+}
+- (IBAction)didTapRefreshButton:(id)sender {
+    [self.logTableView reloadData];
+}
 
 #pragma mark - <TesselBluetoothManager>
 
@@ -60,11 +68,11 @@
 }
 
 - (void)didChangeTesselConnectionStatus {
+    [self.logTableView reloadData];
     self.currentHumidityLabel.text = @"--";
     self.currentTemperatureLabel.text = @"--";
     
-    NSString *status = [TesselBluetoothManager descriptionForStatus:self.bluetoothManager.status];
-    self.connectionStatusLabel.text = [NSString stringWithFormat:@"Current Status: %@", status];
+    self.connectionStatusLabel.text = [TesselBluetoothManager descriptionForStatus:self.bluetoothManager.status];
     
     switch (self.bluetoothManager.status) {
         case TesselBluetoothStatusDiscovered:
@@ -85,6 +93,18 @@
         default:
             break;
     }
+}
+
+#pragma mark <UITableViewDataSource>
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.bluetoothManager.logHistory.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier"]; //Same as in storyboard
+    cell.textLabel.text = self.bluetoothManager.logHistory[indexPath.row];
+    return cell;
 }
 
 

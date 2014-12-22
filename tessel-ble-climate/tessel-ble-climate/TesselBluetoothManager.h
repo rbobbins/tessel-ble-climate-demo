@@ -38,6 +38,8 @@ typedef NS_ENUM(NSUInteger, TesselBluetoothStatus) {
 @property (weak, nonatomic) id<TesselBluetoothManagerDelegate> delegate;
 @property (nonatomic, readonly) CBPeripheral *peripheral;
 @property (nonatomic, readonly) TesselBluetoothStatus status;
+@property (nonatomic, readonly) NSMutableArray *logHistory;
+
 
 + (NSString *)descriptionForStatus:(TesselBluetoothStatus)status;
 
@@ -45,6 +47,7 @@ typedef NS_ENUM(NSUInteger, TesselBluetoothStatus) {
 - (instancetype)initWithCBCentralManager:(CBCentralManager *)cbCentralManager;
 - (void)scanAndConnectToTessel;
 - (void)killConnection;
+- (void)clearLogHistory;
 
 
 @end

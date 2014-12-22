@@ -19,6 +19,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 @property (nonatomic) CBPeripheral *peripheral;
 @property (nonatomic) CBCharacteristic *characteristic;
 @property (nonatomic) NSNumberFormatter *numberFormatter;
+@property (nonatomic) NSMutableArray *logHistory;
 @property (nonatomic) TesselBluetoothStatus status;
 @end
 
@@ -34,6 +35,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
         self.numberFormatter = [[NSNumberFormatter alloc] init];
         self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
         self.status = TesselBluetoothStatusUnknown;
+        self.logHistory = [NSMutableArray array];
     }
     return self;
 }
@@ -54,6 +56,10 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
     }
 
     [self log:@"USER EVENT: cancelled existing peripheral connections and stopped scanning"];
+}
+
+- (void)clearLogHistory {
+    self.logHistory = [NSMutableArray array];
 }
 
 
@@ -166,6 +172,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 
 - (void)log:(NSString *)message {
     NSLog(message);
+    [self.logHistory addObject:message];
 }
 
 @end
