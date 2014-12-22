@@ -72,7 +72,7 @@
                                 <rect key="frame" x="16" y="309" width="568" height="283"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" textLabel="WFk-cC-NWj" style="IBUITableViewCellStyleDefault" id="X6I-gX-HdR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellIdentifier" textLabel="WFk-cC-NWj" style="IBUITableViewCellStyleDefault" id="X6I-gX-HdR">
                                         <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X6I-gX-HdR" id="KMF-Nt-RLK">
@@ -90,6 +90,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="pn0-YC-fwB"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7aF-qq-b4f"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bly-W0-HBM" userLabel="Logging Header Container">

@@ -19,6 +19,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 @property (nonatomic) CBPeripheral *peripheral;
 @property (nonatomic) CBCharacteristic *characteristic;
 @property (nonatomic) NSNumberFormatter *numberFormatter;
+@property (nonatomic) NSDateFormatter *timestampFormatter;
 @property (nonatomic) NSMutableArray *logHistory;
 @property (nonatomic) TesselBluetoothStatus status;
 @end
@@ -32,8 +33,13 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
     if (self) {
         self.centralManager = cbCentralManager;
         self.centralManager.delegate = self;
+        
         self.numberFormatter = [[NSNumberFormatter alloc] init];
         self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        
+        self.timestampFormatter = [[NSDateFormatter alloc] init];
+        self.timestampFormatter.timeStyle = NSDateFormatterMediumStyle;
+        
         self.status = TesselBluetoothStatusUnknown;
         self.logHistory = [NSMutableArray array];
     }
@@ -172,6 +178,9 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 
 - (void)log:(NSString *)message {
     NSLog(message);
+    
+    NSString *timestamp = [self.timestampFormatter stringFromDate:[NSDate date]];
+    message = [NSString stringWithFormat:@"%@: %@", timestamp, message];
     [self.logHistory addObject:message];
 }
 

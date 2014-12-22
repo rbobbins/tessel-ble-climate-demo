@@ -10,7 +10,7 @@
 #import "TesselBluetoothManager.h"
 
 
-@interface ViewController () <TesselBluetoothManagerDelegate, UITableViewDataSource>
+@interface ViewController () <TesselBluetoothManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
 @property (weak, nonatomic) IBOutlet UIButton *killButton;
 @property (weak, nonatomic) IBOutlet UILabel *currentTemperatureLabel;
@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *logTableView;
 @property (nonatomic) TesselBluetoothManager *bluetoothManager;
 @property (nonatomic) NSNumberFormatter *numberFormatter;
+@property (nonatomic) NSArray *logCache;
 @end
 
 @implementation ViewController
@@ -45,10 +46,10 @@
 }
 - (IBAction)didTapClearButton:(id)sender {
     [self.bluetoothManager clearLogHistory];
-    [self.logTableView reloadData];
+    [self updateTableViewData];
 }
 - (IBAction)didTapRefreshButton:(id)sender {
-    [self.logTableView reloadData];
+    [self updateTableViewData];
 }
 
 #pragma mark - <TesselBluetoothManager>
@@ -68,7 +69,7 @@
 }
 
 - (void)didChangeTesselConnectionStatus {
-    [self.logTableView reloadData];
+    [self updateTableViewData];
     self.currentHumidityLabel.text = @"--";
     self.currentTemperatureLabel.text = @"--";
     
@@ -98,13 +99,42 @@
 #pragma mark <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.bluetoothManager.logHistory.count;
+    return self.logCache.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier"]; //Same as in storyboard
-    cell.textLabel.text = self.bluetoothManager.logHistory[indexPath.row];
+    cell.textLabel.text = self.logCache[indexPath.row];
     return cell;
+}
+
+#pragma mark - <UITableViewDelegate>
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString *message = self.logCache[indexPath.row];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Log Event Detail"
+                                                                             message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+#pragma mark - Getters and Setters
+
+- (NSArray *)logCache {
+    if (!_logCache) {
+        _logCache = self.bluetoothManager.logHistory;
+    }
+    return _logCache;
+}
+
+#pragma mark - Private
+
+- (void)updateTableViewData {
+    self.logCache = nil;
+    [self.logTableView reloadData];
 }
 
 
