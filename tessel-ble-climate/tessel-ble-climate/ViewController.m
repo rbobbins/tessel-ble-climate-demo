@@ -60,7 +60,12 @@
 }
 
 - (void)didChangeTesselConnectionStatus {
-    self.connectionStatusLabel.text = [TesselBluetoothManager descriptionForStatus:self.bluetoothManager.status];
+    self.currentHumidityLabel.text = @"--";
+    self.currentTemperatureLabel.text = @"--";
+    
+    NSString *status = [TesselBluetoothManager descriptionForStatus:self.bluetoothManager.status];
+    self.connectionStatusLabel.text = [NSString stringWithFormat:@"Current Status: %@", status];
+    
     switch (self.bluetoothManager.status) {
         case TesselBluetoothStatusDiscovered:
         case TesselBluetoothStatusScanning:
