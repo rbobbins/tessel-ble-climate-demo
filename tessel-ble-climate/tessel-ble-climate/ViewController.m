@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
 @property (weak, nonatomic) IBOutlet UILabel *currentTemperatureLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentHumidityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *connectionStatusLabel;
 @property (nonatomic) TesselBluetoothManager *bluetoothManager;
 @end
 
@@ -25,6 +26,7 @@
     CBCentralManager *centralManager = [[CBCentralManager alloc] initWithDelegate:nil queue:nil];
     self.bluetoothManager = [[TesselBluetoothManager alloc] initWithCBCentralManager:centralManager];
     self.bluetoothManager.delegate = self;
+    [self didChangeTesselConnectionStatus];
 }
 - (IBAction)didTapScanButton:(id)sender {
     [self.bluetoothManager scanAndConnectToTessel];
@@ -42,6 +44,10 @@
 
 - (void)didReceiveUpdatedHumidity:(NSNumber *)number {
     self.currentHumidityLabel.text = [NSString stringWithFormat:@"%@ Percent RH", number];
+}
+
+- (void)didChangeTesselConnectionStatus {
+    self.connectionStatusLabel.text = [TesselBluetoothManager descriptionForStatus:self.bluetoothManager.status];
 }
 
 
