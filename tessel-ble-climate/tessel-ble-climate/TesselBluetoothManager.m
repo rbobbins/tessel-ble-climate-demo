@@ -9,14 +9,16 @@
 #import "TesselBluetoothManager.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 
-static NSString *kTesselBLEAdvertisingServiceUUID = @"D752C5FB-1380-4CD5-B0EF-CAC7D72CFF20"; //Via ble-ble113a gatt profile
-static NSString *kTesselCharacteristicUUID = @"883F1E6B-76F6-4DA1-87EB-6BDBDB617888"; //TODO: is this the same for all Tessels?
+NSString * const kTesselDataTransceivingServiceUUID = @"D752C5FB-1380-4CD5-B0EF-CAC7D72CFF20"; //Via ble-ble113a gatt profile
+NSString * const kTesselTemperatureCharacteristicUUID = @"883F1E6B-76F6-4DA1-87EB-6BDBDB617888";
+NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0DB-B9621E1696CD";
 
 @interface TesselBluetoothManager () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @property (nonatomic) CBCentralManager *centralManager;
 @property (nonatomic) CBPeripheral *peripheral;
 @property (nonatomic) CBCharacteristic *characteristic;
+@property (nonatomic) NSNumberFormatter *numberFormatter;
 @end
 
 
@@ -28,9 +30,12 @@ static NSString *kTesselCharacteristicUUID = @"883F1E6B-76F6-4DA1-87EB-6BDBDB617
     if (self) {
         self.centralManager = cbCentralManager;
         self.centralManager.delegate = self;
+        self.numberFormatter = [[NSNumberFormatter alloc] init];
+        self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     }
     return self;
 }
+
 - (void)scanAndConnectToTessel {
 
     [self.centralManager scanForPeripheralsWithServices:nil options:nil];
@@ -64,7 +69,7 @@ static NSString *kTesselCharacteristicUUID = @"883F1E6B-76F6-4DA1-87EB-6BDBDB617
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSLog(@"================> %@", @"Connected to Tessel    ");
-    CBUUID *dataServiceUUID = [CBUUID UUIDWithString:kTesselBLEAdvertisingServiceUUID];
+    CBUUID *dataServiceUUID = [CBUUID UUIDWithString:kTesselDataTransceivingServiceUUID];
     [peripheral discoverServices:@[dataServiceUUID]];
 }
 
@@ -84,14 +89,16 @@ static NSString *kTesselCharacteristicUUID = @"883F1E6B-76F6-4DA1-87EB-6BDBDB617
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
-    NSLog(@"================> %@", @"Discovered characteristics for service");
+    [self log:@"Discovered characteristics for service"];
     
-    CBUUID *characteristicUUID = [CBUUID UUIDWithString:kTesselCharacteristicUUID];
+    CBUUID *temperatureCharacteristicUUID = [CBUUID UUIDWithString:kTesselTemperatureCharacteristicUUID];
+    CBUUID *humidityCharacteristicUUID = [CBUUID UUIDWithString:kTesselHumidityCharacteristicUUID];
+    
     for (CBCharacteristic *characteristic in service.characteristics) {
-        if ([characteristic.UUID.UUIDString isEqualToString:characteristicUUID.UUIDString]) {
-            NSLog(@"================> %@", @"Subscribed to notifcations for characteristic");
+        if ([characteristic.UUID.UUIDString isEqualToString:temperatureCharacteristicUUID.UUIDString] ||
+            [characteristic.UUID.UUIDString isEqualToString:humidityCharacteristicUUID.UUIDString]) {
+            [self log:@"Subscribed to notifcations for temperature"];
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-            return;
         }
     }
 }
@@ -100,6 +107,24 @@ static NSString *kTesselCharacteristicUUID = @"883F1E6B-76F6-4DA1-87EB-6BDBDB617
     NSString *str = [[NSString alloc] initWithData:characteristic.value
                                           encoding:NSUTF8StringEncoding];
     
-    NSLog(@"================> Received data: %@", str);
+    NSNumber *dataValue = [self.numberFormatter numberFromString:str];
+
+    NSString *logMessage;
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kTesselTemperatureCharacteristicUUID]]) {
+        [self.delegate didReceiveUpdatedTemperature:dataValue];
+         logMessage = [NSString stringWithFormat:@"Received updated temperature from Tessel: %@", dataValue];
+    } else {
+        [self.delegate didReceiveUpdatedHumidity:dataValue];
+        logMessage = [NSString stringWithFormat:@"Received updated humidity from Tessel: %@", dataValue];
+    }
+    
+    [self log:logMessage];
+
 }
+
+#pragma mark - Private
+- (void)log:(NSString *)message {
+    NSLog(message);
+}
+
 @end

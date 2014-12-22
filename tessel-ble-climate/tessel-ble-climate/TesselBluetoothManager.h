@@ -7,15 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @class CBCentralManager;
 @class CBPeripheral;
-@protocol CBCentralManagerDelegate;
 
+
+FOUNDATION_EXPORT NSString * const kTesselDataTransceivingServiceUUID;
 
 @protocol TesselBluetoothManagerDelegate <NSObject>
 @required
 - (void)didTurnOnBluetooth;
+- (void)didReceiveUpdatedTemperature:(NSNumber *)number;
+- (void)didReceiveUpdatedHumidity:(NSNumber *)number;
 
 @end
 

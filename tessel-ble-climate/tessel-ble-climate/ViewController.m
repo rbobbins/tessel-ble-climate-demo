@@ -9,10 +9,11 @@
 #import "ViewController.h"
 #import "TesselBluetoothManager.h"
 
-static NSString *kTesselBLEAdvertisingServiceUUID = @"D752C5FB-1380-4CD5-B0EF-CAC7D72CFF20"; //Via ble-ble113a gatt profile
 
 @interface ViewController () <TesselBluetoothManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
+@property (weak, nonatomic) IBOutlet UILabel *currentTemperatureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentHumidityLabel;
 @property (nonatomic) TesselBluetoothManager *bluetoothManager;
 @end
 
@@ -27,13 +28,20 @@ static NSString *kTesselBLEAdvertisingServiceUUID = @"D752C5FB-1380-4CD5-B0EF-CA
 }
 - (IBAction)didTapScanButton:(id)sender {
     [self.bluetoothManager scanAndConnectToTessel];
-//    [self.centralManager scanForPeripheralsWithServices:nil options:nil];
 }
 
 #pragma mark - <TesselBluetoothManager>
 
 - (void)didTurnOnBluetooth {
     [self.scanButton setEnabled:YES];
+}
+
+- (void)didReceiveUpdatedTemperature:(NSNumber *)number {
+    self.currentTemperatureLabel.text = [NSString stringWithFormat:@"%@ F", number];
+}
+
+- (void)didReceiveUpdatedHumidity:(NSNumber *)number {
+    self.currentHumidityLabel.text = [NSString stringWithFormat:@"%@ Percent RH", number];
 }
 
 

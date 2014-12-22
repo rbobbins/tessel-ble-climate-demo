@@ -26,10 +26,24 @@
                                     <action selector="didTapScanButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jIX-Vy-347"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Temperature: --" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igf-QR-JEm">
+                                <rect key="frame" x="68" y="117" width="205" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Humidity: --" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvV-zy-VPL">
+                                <rect key="frame" x="68" y="146" width="154" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="currentHumidityLabel" destination="UvV-zy-VPL" id="tau-1D-9Lj"/>
+                        <outlet property="currentTemperatureLabel" destination="Igf-QR-JEm" id="EV8-q1-AhL"/>
                         <outlet property="scanButton" destination="uhl-RF-vGB" id="xFZ-ul-m0f"/>
                     </connections>
                 </viewController>

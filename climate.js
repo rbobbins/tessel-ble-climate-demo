@@ -34,9 +34,8 @@ ble.on('connect', function() {
 	setInterval(function(){
 		climate.readHumidity(function(err, humid){
 			climate.readTemperature('f', function(err, temp){
-				var data = "{t: " + temp.toFixed(2) + ", humid: " + humid.toFixed(2) + "}";
-				ble.writeLocalValue(0, new Buffer(data));
-				console.log('Degrees:', temp.toFixed(4) + 'F', 'Humidity:', humid.toFixed(4) + '%RH');
+				ble.writeLocalValue(0, new Buffer(temp.toFixed(4)));
+				ble.writeLocalValue(1, new Buffer(humid.toFixed(4)));
 			});
 		});
 	}, 1000);
