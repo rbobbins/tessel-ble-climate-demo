@@ -49,6 +49,14 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 - (void)scanAndConnectToTessel
 {
     self.status = TesselBluetoothStatusScanning;
+
+    /* Via Apple:
+     You can provide an array of CBUUID objects—representing service UUIDs—in the serviceUUIDs parameter. When you do, the central manager returns only peripherals that advertise the services you specify (recommended). If the serviceUUIDs parameter is nil, all discovered peripherals are returned regardless of their supported services (not recommended).
+     
+     Tessel does not include service UUID's in its advertisement. Thus, we have to scan via the non-recommended way.
+     
+     */
+    
     [self.centralManager scanForPeripheralsWithServices:nil options:nil];
 }
 
@@ -133,25 +141,21 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 #pragma mark - <CBPeripheralDelegate>
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
-    [self log:[NSString stringWithFormat:@"Discovered services: %@", peripheral.services]];
-    for (CBService *service in peripheral.services) {
-        [peripheral discoverCharacteristics:nil forService:service];
-    }
-    
+    [self log:[NSString stringWithFormat:@"Discovered services with error: %@", (error ?: @"N/A")]];
+
+    CBService *service = peripheral.services[0];
+    CBUUID *tempCharacteristicUUID = [CBUUID UUIDWithString:kTesselTemperatureCharacteristicUUID];
+    CBUUID *humidityCharacteristicUUID = [CBUUID UUIDWithString:kTesselHumidityCharacteristicUUID];
+    [peripheral discoverCharacteristics:@[tempCharacteristicUUID, humidityCharacteristicUUID]
+                             forService:service];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
-    [self log:@"Discovered characteristics for service"];
-    
-    CBUUID *temperatureCharacteristicUUID = [CBUUID UUIDWithString:kTesselTemperatureCharacteristicUUID];
-    CBUUID *humidityCharacteristicUUID = [CBUUID UUIDWithString:kTesselHumidityCharacteristicUUID];
+    [self log:[NSString stringWithFormat:@"Discovered characteristics with error: %@", (error ?: @"N/A")]];
     
     for (CBCharacteristic *characteristic in service.characteristics) {
-        if ([characteristic.UUID.UUIDString isEqualToString:temperatureCharacteristicUUID.UUIDString] ||
-            [characteristic.UUID.UUIDString isEqualToString:humidityCharacteristicUUID.UUIDString]) {
-            [self log:[NSString stringWithFormat:@"Subscribed to notifcations for characteristic %@", characteristic.UUID.UUIDString]];
-            [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-        }
+        [self log:[NSString stringWithFormat:@"Subscribed to notifcations for characteristic %@", characteristic.UUID.UUIDString]];
+        [peripheral setNotifyValue:YES forCharacteristic:characteristic];
     }
 }
 
