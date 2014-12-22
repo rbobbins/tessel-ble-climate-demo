@@ -55,6 +55,7 @@
 #pragma mark - <TesselBluetoothManager>
 
 - (void)didTurnOnBluetooth {
+    //Don't allow user to monitor Tessel unless iDevice bluetooth is enabled
     [self.scanButton setEnabled:YES];
 }
 
@@ -69,6 +70,8 @@
 }
 
 - (void)didChangeTesselConnectionStatus {
+    // Respond to any change in connection status by reseting labels and updating logs
+    
     [self updateTableViewData];
     self.currentHumidityLabel.text = @"--";
     self.currentTemperatureLabel.text = @"--";
@@ -103,7 +106,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier"]; //Same as in storyboard
+    NSString *cellIdentifier = @"cellIdentifier"; //Same as the one defined in storyboard
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell.textLabel.text = self.logCache[indexPath.row];
     return cell;
 }
@@ -124,6 +128,13 @@
 #pragma mark - Getters and Setters
 
 - (NSArray *)logCache {
+    /*We use a log cache instead of always calling through to the bluetooth manager.
+     This ensures that if a user taps a cell, they'll see an alert with the same
+     message that the cell contains. If we didn't cache, and the bluetooth manager's
+     log history had changed since the time the cell was rendered, the alert would
+     contain a different message than the cell itself.
+     */
+    
     if (!_logCache) {
         _logCache = self.bluetoothManager.logHistory;
     }
