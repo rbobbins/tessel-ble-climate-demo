@@ -51,7 +51,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
     if (central.state == CBCentralManagerStatePoweredOn) {
         [self.delegate didTurnOnBluetooth];
     }
-    [self log:[NSString stringWithFormat:@"Central bluetooth manager updated state: %d", central.state]];
+    [self log:[NSString stringWithFormat:@"Central bluetooth manager updated state: %ld", central.state]];
 }
 
 - (void)centralManager:(CBCentralManager *)central

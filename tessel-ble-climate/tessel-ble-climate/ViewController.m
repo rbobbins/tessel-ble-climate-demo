@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentHumidityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *connectionStatusLabel;
 @property (nonatomic) TesselBluetoothManager *bluetoothManager;
+@property (nonatomic) NSNumberFormatter *numberFormatter;
 @end
 
 @implementation ViewController
@@ -26,7 +27,12 @@
     CBCentralManager *centralManager = [[CBCentralManager alloc] initWithDelegate:nil queue:nil];
     self.bluetoothManager = [[TesselBluetoothManager alloc] initWithCBCentralManager:centralManager];
     self.bluetoothManager.delegate = self;
+    self.numberFormatter = [[NSNumberFormatter alloc] init];
+    self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    self.numberFormatter.maximumFractionDigits = 2;
+    self.numberFormatter.minimumFractionDigits = 2;
     [self didChangeTesselConnectionStatus];
+    
 }
 - (IBAction)didTapScanButton:(id)sender {
     [self.bluetoothManager scanAndConnectToTessel];
@@ -39,11 +45,13 @@
 }
 
 - (void)didReceiveUpdatedTemperature:(NSNumber *)number {
-    self.currentTemperatureLabel.text = [NSString stringWithFormat:@"%@ F", number];
+    NSString *numberString = [self.numberFormatter stringFromNumber:number];
+    self.currentTemperatureLabel.text = [NSString stringWithFormat:@"%@ °F", numberString];
 }
 
 - (void)didReceiveUpdatedHumidity:(NSNumber *)number {
-    self.currentHumidityLabel.text = [NSString stringWithFormat:@"%@ Percent RH", number];
+    NSString *numberString = [self.numberFormatter stringFromNumber:number];
+    self.currentHumidityLabel.text = [NSString stringWithFormat:@"%@ %%", numberString];
 }
 
 - (void)didChangeTesselConnectionStatus {
