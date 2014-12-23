@@ -31,6 +31,18 @@ This application demonstrates how to stream climate data from your Tessel to you
 	* Log does not update automatically when new climate data is received; user can manually refresh log by clicking the "Refresh button"
 	* User can clear log at any time
 
+
+## Screenshots
+_Click to enlarge_
+
+
+<a href="https://raw.githubusercontent.com/rbobbins/tessel-ble-climate-demo/master/screenshots/success_case.png">
+	<img src="https://raw.githubusercontent.com/rbobbins/tessel-ble-climate-demo/master/screenshots/success_case.png" width="40%"/>
+</a>
+<a href="https://raw.githubusercontent.com/rbobbins/tessel-ble-climate-demo/master/screenshots/scanning_case.png">
+	<img src="https://raw.githubusercontent.com/rbobbins/tessel-ble-climate-demo/master/screenshots/scanning_case.png" width="40%"/>
+</a>
+
 ## Requirements and Assumptions
 ### Hardware Requirements
 * Tessel, with the following modules:
@@ -38,9 +50,11 @@ This application demonstrates how to stream climate data from your Tessel to you
 	* climate-si7020 module (you could probably make it work with the older climate-si7005 module by swapping out the node package that's included in this repo)
 * iOS device with BLE compatability. Must be running iOS8
 * Mac
+
 ### Software Requirements
 * XCode 6.1
 * Tessel CLI
+
 ### Assumptions
 * You're a registered iOS developer. Unfortunately, Apple requires that you be a registered iOS dev in order to build any app on a physical device. BLE only works on physical devices, not on the iOS simulator.
 
