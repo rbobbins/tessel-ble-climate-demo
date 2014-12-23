@@ -20,6 +20,7 @@
 @property (nonatomic) TesselBluetoothManager *bluetoothManager;
 @property (nonatomic) NSNumberFormatter *numberFormatter;
 @property (nonatomic) NSArray *logCache;
+@property (nonatomic) NSTimer *connectionTimer;
 @end
 
 @implementation ViewController
@@ -69,8 +70,9 @@
 }
 
 - (void)didChangeTesselConnectionStatus {
-    // Respond to any change in connection status by resetting labels and updating logs
+    [self.connectionTimer invalidate];
     
+    // Respond to any change in connection status by resetting labels and updating logs
     [self updateTableViewData];
     self.currentHumidityLabel.text = @"--";
     self.currentTemperatureLabel.text = @"--";
@@ -81,6 +83,7 @@
         case TesselBluetoothStatusDiscovered:
         case TesselBluetoothStatusScanning:
         case TesselBluetoothStatusConnected:
+        case TesselBluetoothStatusReconnecting:
         {
             self.scanButton.enabled = NO;
             self.killButton.enabled = YES;
@@ -88,15 +91,25 @@
         }
         case TesselBluetoothStatusDisconnected:
         case TesselBluetoothStatusConnectionFailed:
-        case TesselBluetoothStatusReconnecting:
         {
             self.scanButton.enabled = YES;
             self.killButton.enabled = NO;
             break;
         }
-        default:
-            break;
+        case TesselBluetoothStatusUnknown: break;
     }
+    
+    if (self.bluetoothManager.status == TesselBluetoothStatusReconnecting ||
+        self.bluetoothManager.status == TesselBluetoothStatusScanning) {
+        self.connectionTimer = [NSTimer timerWithTimeInterval:5
+                                                       target:self
+                                                     selector:@selector(askToKeepScanning:)
+                                                     userInfo:nil
+                                                      repeats:NO];
+        [[NSRunLoop mainRunLoop] addTimer:self.connectionTimer forMode:NSDefaultRunLoopMode];
+    }
+
+    
 }
 
 #pragma mark <UITableViewDataSource>
@@ -156,6 +169,25 @@
 - (void)updateTableViewData {
     self.logCache = nil;
     [self.logTableView reloadData];
+}
+
+- (void)askToKeepScanning:(NSTimer *)timer {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Keep Scanning?"
+                                         message:@"You've been scanning for your Tessel for 5 seconds. Would you like to keep searching?"
+                                                                 preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Yes, continue scanning"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No, stop scanning"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction *action) {
+                                                               [self.bluetoothManager killConnection];
+                                                           }];
+    [controller addAction:continueAction];
+    [controller addAction:cancelAction];
+    [self presentViewController:controller
+                       animated:YES
+                     completion:nil];
 }
 
 
