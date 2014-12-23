@@ -2,7 +2,27 @@
 
 This application demonstrates how to stream climate data from your Tessel to your BLE-equipped iPhone or iPad
 
+<div id="top_of_page"></div>
+
+## Table of Contents
+<ul>
+	<li><a href="#user-content-getting_started">Getting Started</a></li>
+	<li><a href="#user-content-feature_list">Feature List</a></li>
+	<li><a href="#user-content-screenshots">Screenshots</a></li>
+	<li><a href="#user-content-requirements">Requirements and Assumptions</a></li>
+	<ul>
+		<li>Software Requirements</li>
+		<li>Hardware Requirements</li>
+		<li>Assumptions</li>
+	</ul>
+	<li><a href="#user-content-how_it_works">How it Works</a></li>
+	<li><a href="#user-content-limitations">Limitations</a></li>
+</ul>
+
+</div>
+
 ## Getting Started
+<div id="getting_started"><a href="#user-content-top_of_page">(Back to top)</div>
 
 1. `git clone https://github.com/rbobbins/tessel-ble-climate-demo.git`
 1. `cd path/to/tessel-ble-climate-demo`
@@ -19,7 +39,8 @@ This application demonstrates how to stream climate data from your Tessel to you
 	* Plug in your iDevice
 	* Build for your iDevice
 
-## Features
+## Feature List
+<div id="feature_list"><a href="#user-content-top_of_page">(Back to top)</div>
 
 * When iPhone/iPad is connected to Tessel, it shows a live display of climate data
 * User can scan for (and then connect to) Tessel
@@ -33,6 +54,8 @@ This application demonstrates how to stream climate data from your Tessel to you
 
 
 ## Screenshots
+<div id="screenshots"><a href="#user-content-top_of_page">(Back to top)</div>
+
 _Click to enlarge_
 
 
@@ -44,6 +67,8 @@ _Click to enlarge_
 </a>
 
 ## Requirements and Assumptions
+<div id="requirements"><a href="#user-content-top_of_page">(Back to top)</div>
+
 ### Hardware Requirements
 * Tessel, with the following modules:
 	* ble-ble113a module
@@ -60,6 +85,7 @@ _Click to enlarge_
 
 
 ## How it works
+<div id="how_it_works"><a href="#user-content-top_of_page">(Back to top)</div>
 
 To start, the Tessel BLE module advertises that it's available for connection over BLE.
 
@@ -92,5 +118,7 @@ Every time the BLE module broadcasts climate data (at the 1 second interval we s
 Each time this method is called, we parse the raw byte data into an `NSNumber` and notify the ViewController. The ViewController updates the large temperature and humidity displays, making sure the numbers are formatted in human-readable values.
 
 ## Limitations
+<div id="limitations"><a href="#user-content-top_of_page">(Back to top)</div>
+
 * App does not record climate changes that happen when it's running in the background
 * App has a mostly universal layout, but it looks cramped if you're running an iPhone 5s or earlier in landscape mode. 
