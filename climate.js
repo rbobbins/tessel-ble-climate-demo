@@ -1,32 +1,21 @@
-// Any copyright is dedicated to the Public Domain.
-// http://creativecommons.org/publicdomain/zero/1.0/
-
-/*********************************************
-This basic climate example logs a stream
-of temperature and humidity to the console.
-*********************************************/
-
 var tessel = require('tessel');
+
 var climatelib = require('climate-si7020');
 var bleLib = require('ble-ble113a')
+
 var climate = climatelib.use(tessel.port['B']);
 var ble = bleLib.use(tessel.port['A']);
 
-console.log(bleLib.profile);
 
 ble.on('ready', function(err) {
 	if (err) {
 		return console.log(err);
 	} 
-	console.log('Connected to ble113a. ');
-
+	console.log('Connected to ble113a.');
 
 	ble.startAdvertising();
 });
-	
-climate.on('ready', function() {
-	console.log('Connected to climate-si7020');
-});
+
 
 ble.on('connect', function() {
 	console.log("We have a BLE connection to master.");
@@ -39,49 +28,32 @@ ble.on('connect', function() {
 			});
 		});
 	}, 1000);
-
-
 });
 
+//Climate event handling, primarily logging
+climate.on('ready', function() {
+	console.log('Connected to climate-si7020');
+});
 
 climate.on('error', function(err) {
 	console.log('error connecting module', err);
 });
 
 
+//Bluetooth event handling, primarily logging
 ble.on('disconnect', function() {
+	console.log('Disconnected from central device')
   // Stop our interval
   clearInterval(interval);
   // Start advertising again
   ble.startAdvertising();
 });
 
+ble.on('startAdvertising', function(){
+	console.log('Started advertising as BLE peripheral device')
+});
 
+ble.on('stopAdvertising', function(){
+	console.log('Stopped advertising')
+});
 
-// var ble = require('../').use(tessel.port['A']); // Replace '../' with 'ble-ble113a' in your own code
-
-// var interval;
-
-// ble.on('ready', function(err) {
-// 	if (err) return console.log(err);
-//   console.log('started advertising...');
-//   ble.startAdvertising();
-// });
-
-// ble.on('connect', function() {
-//   console.log("We have a connection to master.");
-//   var value = 0;
-//   interval = setInterval(function iteration() {
-//     var str = "Interval #" + value++;
-//     console.log("Writing out: ", str);
-
-//     ble.writeLocalValue(0, new Buffer(str));
-//   }, 1000);
-// });
-
-// ble.on('disconnect', function() {
-//   // Stop our interval
-//   clearInterval(interval);
-//   // Start advertising again
-//   ble.startAdvertising();
-// });
