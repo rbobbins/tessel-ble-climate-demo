@@ -138,8 +138,14 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-    self.status = TesselBluetoothStatusDisconnected;
-    [self log:[NSString stringWithFormat:@"Lost connection to Tessel with error: %@", (error ?: @"N/A")]];
+    if (error) {
+        [self scanAndConnectToTessel];
+        self.status = TesselBluetoothStatusReconnecting;
+        [self log:[NSString stringWithFormat:@"Lost connection to Tessel with error (will try to reconnect): %@", error]];
+    } else {
+        self.status = TesselBluetoothStatusDisconnected;
+        [self log:@"Lost connection to Tessel."];
+    }
 }
 
 
@@ -183,6 +189,8 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
 
 }
 
+#pragma mark - Getters and Setters
+
 - (void)setStatus:(TesselBluetoothStatus)status {
     _status = status;
     [self.delegate didChangeTesselConnectionStatus];
@@ -195,8 +203,10 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
         case TesselBluetoothStatusScanning: return @"Scanning";
         case TesselBluetoothStatusDiscovered: return @"Discovered";
         case TesselBluetoothStatusConnected: return @"Connected";
-        case TesselBluetoothStatusConnectionFailed: return @"Connection Failed";
         case TesselBluetoothStatusDisconnected: return @"Disconnected";
+        case TesselBluetoothStatusReconnecting: return @"Reconnecting";
+        case TesselBluetoothStatusConnectionFailed: return @"Connection Failed";
+            
     }
 }
 #pragma mark - Private

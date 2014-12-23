@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger, TesselBluetoothStatus) {
     TesselBluetoothStatusDiscovered,
     TesselBluetoothStatusConnected,
     TesselBluetoothStatusDisconnected,
+    TesselBluetoothStatusReconnecting,
     TesselBluetoothStatusConnectionFailed
 };
 
