@@ -9,6 +9,8 @@
 #import "TesselBluetoothManager.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 
+// All constants are defined in the BLE113A module's GATT Profile
+NSString * const kTesselGATTDeviceName = @"Tessel BLE113A Module";
 NSString * const kTesselDataTransceivingServiceUUID = @"D752C5FB-1380-4CD5-B0EF-CAC7D72CFF20"; //Via ble-ble113a gatt profile
 NSString * const kTesselTemperatureCharacteristicUUID = @"883F1E6B-76F6-4DA1-87EB-6BDBDB617888";
 NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0DB-B9621E1696CD";
@@ -53,7 +55,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
     /* Via Apple:
      You can provide an array of CBUUID objects—representing service UUIDs—in the serviceUUIDs parameter. When you do, the central manager returns only peripherals that advertise the services you specify (recommended). If the serviceUUIDs parameter is nil, all discovered peripherals are returned regardless of their supported services (not recommended).
      
-     Tessel does not include service UUID's in its advertisement. Thus, we have to scan via the non-recommended way.
+     Tessel does not include service UUID's in its default advertisement. Thus, we have to scan via the non-recommended way.
      
      */
     
@@ -111,7 +113,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
                   RSSI:(NSNumber *)RSSI
 {
     
-    if ([peripheral.name isEqualToString:@"Tessel BLE113A Module"]) {
+    if ([peripheral.name isEqualToString:kTesselGATTDeviceName]) {
         self.peripheral = peripheral;
         self.peripheral.delegate = self;
         [self.centralManager connectPeripheral:peripheral options:nil];
