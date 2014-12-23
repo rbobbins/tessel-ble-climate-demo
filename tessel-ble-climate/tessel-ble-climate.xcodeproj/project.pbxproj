@@ -8,41 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		5A6326D71A474EED00B7E1C9 /* TesselBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6326D61A474EED00B7E1C9 /* TesselBluetoothManager.m */; };
-		5A77C5011A4766F8002CC1CE /* TesselBluetoothManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C5001A4766F8002CC1CE /* TesselBluetoothManagerTests.m */; };
-		5A77C51F1A476B76002CC1CE /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C5131A476A32002CC1CE /* libOCMock.a */; };
 		5AFD17C31A466D4E00214E54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17C21A466D4E00214E54 /* main.m */; };
 		5AFD17C61A466D4E00214E54 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17C51A466D4E00214E54 /* AppDelegate.m */; };
 		5AFD17C91A466D4E00214E54 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17C81A466D4E00214E54 /* ViewController.m */; };
 		5AFD17CC1A466D4E00214E54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD17CA1A466D4E00214E54 /* Main.storyboard */; };
 		5AFD17CE1A466D4E00214E54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD17CD1A466D4E00214E54 /* Images.xcassets */; };
 		5AFD17D11A466D4E00214E54 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD17CF1A466D4E00214E54 /* LaunchScreen.xib */; };
-		5AFD17DD1A466D4E00214E54 /* tessel_ble_climateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD17DC1A466D4E00214E54 /* tessel_ble_climateTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		5AFD17D71A466D4E00214E54 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5AFD17B51A466D4E00214E54 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5AFD17BC1A466D4E00214E54;
-			remoteInfo = "tessel-ble-climate";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5A6326D51A474EED00B7E1C9 /* TesselBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TesselBluetoothManager.h; sourceTree = "<group>"; };
 		5A6326D61A474EED00B7E1C9 /* TesselBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TesselBluetoothManager.m; sourceTree = "<group>"; };
-		5A77C5001A4766F8002CC1CE /* TesselBluetoothManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TesselBluetoothManagerTests.m; sourceTree = "<group>"; };
-		5A77C5131A476A32002CC1CE /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
-		5A77C5151A476A32002CC1CE /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
-		5A77C5161A476A32002CC1CE /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
-		5A77C5171A476A32002CC1CE /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
-		5A77C5181A476A32002CC1CE /* OCMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMLocation.h; sourceTree = "<group>"; };
-		5A77C5191A476A32002CC1CE /* OCMMacroState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMMacroState.h; sourceTree = "<group>"; };
-		5A77C51A1A476A32002CC1CE /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
-		5A77C51B1A476A32002CC1CE /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
-		5A77C51C1A476A32002CC1CE /* OCMRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMRecorder.h; sourceTree = "<group>"; };
-		5A77C51D1A476A32002CC1CE /* OCMStubRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMStubRecorder.h; sourceTree = "<group>"; };
 		5AFD17BD1A466D4E00214E54 /* tessel-ble-climate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tessel-ble-climate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFD17C11A466D4E00214E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AFD17C21A466D4E00214E54 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -53,9 +29,6 @@
 		5AFD17CB1A466D4E00214E54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5AFD17CD1A466D4E00214E54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5AFD17D01A466D4E00214E54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5AFD17D61A466D4E00214E54 /* tessel-ble-climateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tessel-ble-climateTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AFD17DB1A466D4E00214E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5AFD17DC1A466D4E00214E54 /* tessel_ble_climateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tessel_ble_climateTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,56 +39,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5AFD17D31A466D4E00214E54 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A77C51F1A476B76002CC1CE /* libOCMock.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A77C5111A476A32002CC1CE /* usr */ = {
-			isa = PBXGroup;
-			children = (
-				5A77C5121A476A32002CC1CE /* include */,
-			);
-			path = usr;
-			sourceTree = "<group>";
-		};
-		5A77C5121A476A32002CC1CE /* include */ = {
-			isa = PBXGroup;
-			children = (
-				5A77C5131A476A32002CC1CE /* libOCMock.a */,
-				5A77C5141A476A32002CC1CE /* OCMock */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		5A77C5141A476A32002CC1CE /* OCMock */ = {
-			isa = PBXGroup;
-			children = (
-				5A77C5151A476A32002CC1CE /* NSNotificationCenter+OCMAdditions.h */,
-				5A77C5161A476A32002CC1CE /* OCMArg.h */,
-				5A77C5171A476A32002CC1CE /* OCMConstraint.h */,
-				5A77C5181A476A32002CC1CE /* OCMLocation.h */,
-				5A77C5191A476A32002CC1CE /* OCMMacroState.h */,
-				5A77C51A1A476A32002CC1CE /* OCMock.h */,
-				5A77C51B1A476A32002CC1CE /* OCMockObject.h */,
-				5A77C51C1A476A32002CC1CE /* OCMRecorder.h */,
-				5A77C51D1A476A32002CC1CE /* OCMStubRecorder.h */,
-			);
-			path = OCMock;
-			sourceTree = "<group>";
-		};
 		5AFD17B41A466D4E00214E54 = {
 			isa = PBXGroup;
 			children = (
-				5A77C5111A476A32002CC1CE /* usr */,
 				5AFD17BF1A466D4E00214E54 /* tessel-ble-climate */,
-				5AFD17D91A466D4E00214E54 /* tessel-ble-climateTests */,
 				5AFD17BE1A466D4E00214E54 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -124,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				5AFD17BD1A466D4E00214E54 /* tessel-ble-climate.app */,
-				5AFD17D61A466D4E00214E54 /* tessel-ble-climateTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,24 +84,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5AFD17D91A466D4E00214E54 /* tessel-ble-climateTests */ = {
-			isa = PBXGroup;
-			children = (
-				5AFD17DC1A466D4E00214E54 /* tessel_ble_climateTests.m */,
-				5AFD17DA1A466D4E00214E54 /* Supporting Files */,
-				5A77C5001A4766F8002CC1CE /* TesselBluetoothManagerTests.m */,
-			);
-			path = "tessel-ble-climateTests";
-			sourceTree = "<group>";
-		};
-		5AFD17DA1A466D4E00214E54 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5AFD17DB1A466D4E00214E54 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,24 +104,6 @@
 			productReference = 5AFD17BD1A466D4E00214E54 /* tessel-ble-climate.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5AFD17D51A466D4E00214E54 /* tessel-ble-climateTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5AFD17E31A466D4E00214E54 /* Build configuration list for PBXNativeTarget "tessel-ble-climateTests" */;
-			buildPhases = (
-				5AFD17D21A466D4E00214E54 /* Sources */,
-				5AFD17D31A466D4E00214E54 /* Frameworks */,
-				5AFD17D41A466D4E00214E54 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5AFD17D81A466D4E00214E54 /* PBXTargetDependency */,
-			);
-			name = "tessel-ble-climateTests";
-			productName = "tessel-ble-climateTests";
-			productReference = 5AFD17D61A466D4E00214E54 /* tessel-ble-climateTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -222,10 +115,6 @@
 				TargetAttributes = {
 					5AFD17BC1A466D4E00214E54 = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					5AFD17D51A466D4E00214E54 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 5AFD17BC1A466D4E00214E54;
 					};
 				};
 			};
@@ -243,7 +132,6 @@
 			projectRoot = "";
 			targets = (
 				5AFD17BC1A466D4E00214E54 /* tessel-ble-climate */,
-				5AFD17D51A466D4E00214E54 /* tessel-ble-climateTests */,
 			);
 		};
 /* End PBXProject section */
@@ -256,13 +144,6 @@
 				5AFD17CC1A466D4E00214E54 /* Main.storyboard in Resources */,
 				5AFD17D11A466D4E00214E54 /* LaunchScreen.xib in Resources */,
 				5AFD17CE1A466D4E00214E54 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5AFD17D41A466D4E00214E54 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,24 +161,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5AFD17D21A466D4E00214E54 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A77C5011A4766F8002CC1CE /* TesselBluetoothManagerTests.m in Sources */,
-				5AFD17DD1A466D4E00214E54 /* tessel_ble_climateTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5AFD17D81A466D4E00214E54 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5AFD17BC1A466D4E00214E54 /* tessel-ble-climate */;
-			targetProxy = 5AFD17D71A466D4E00214E54 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5AFD17CA1A466D4E00214E54 /* Main.storyboard */ = {
@@ -417,72 +281,6 @@
 			};
 			name = Release;
 		};
-		5AFD17E41A466D4E00214E54 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(PROJECT_DIR)/usr/include",
-				);
-				INFOPLIST_FILE = "tessel-ble-climateTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/iOS",
-					"$(PROJECT_DIR)/usr/include",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					XCTest,
-					"-ObjC",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tessel-ble-climate.app/tessel-ble-climate";
-			};
-			name = Debug;
-		};
-		5AFD17E51A466D4E00214E54 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(PROJECT_DIR)/usr/include",
-				);
-				INFOPLIST_FILE = "tessel-ble-climateTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/iOS",
-					"$(PROJECT_DIR)/usr/include",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					XCTest,
-					"-ObjC",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tessel-ble-climate.app/tessel-ble-climate";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -500,15 +298,6 @@
 			buildConfigurations = (
 				5AFD17E11A466D4E00214E54 /* Debug */,
 				5AFD17E21A466D4E00214E54 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5AFD17E31A466D4E00214E54 /* Build configuration list for PBXNativeTarget "tessel-ble-climateTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5AFD17E41A466D4E00214E54 /* Debug */,
-				5AFD17E51A466D4E00214E54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
