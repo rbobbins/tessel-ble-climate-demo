@@ -30,13 +30,12 @@
     CBCentralManager *centralManager = [[CBCentralManager alloc] initWithDelegate:nil queue:nil];
     self.bluetoothManager = [[TesselBluetoothManager alloc] initWithCBCentralManager:centralManager];
     self.bluetoothManager.delegate = self;
-    self.numberFormatter = [[NSNumberFormatter alloc] init];
-    self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    self.numberFormatter.maximumFractionDigits = 2;
-    self.numberFormatter.minimumFractionDigits = 2;
     [self didChangeTesselConnectionStatus];
     
 }
+
+#pragma mark - Actions
+
 - (IBAction)didTapScanButton:(id)sender {
     [self.bluetoothManager scanAndConnectToTessel];
 }
@@ -70,7 +69,7 @@
 }
 
 - (void)didChangeTesselConnectionStatus {
-    // Respond to any change in connection status by reseting labels and updating logs
+    // Respond to any change in connection status by resetting labels and updating logs
     
     [self updateTableViewData];
     self.currentHumidityLabel.text = @"--";
@@ -140,6 +139,16 @@
         _logCache = self.bluetoothManager.logHistory;
     }
     return _logCache;
+}
+
+- (NSNumberFormatter *)numberFormatter {
+    if (!_numberFormatter) {
+        _numberFormatter = [[NSNumberFormatter alloc] init];
+        _numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        _numberFormatter.maximumFractionDigits = 2;
+        _numberFormatter.minimumFractionDigits = 2;
+    }
+    return _numberFormatter;
 }
 
 #pragma mark - Private
