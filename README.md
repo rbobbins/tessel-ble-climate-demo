@@ -32,12 +32,20 @@ This application demonstrates how to stream climate data from your Tessel to you
 	* Plug your BLE module into port A
 	* Plug your climate module into port B
 	* `tessel run climate.js`
+	* Once you see the following 2 lines (in any order), your Tessel is ready to connect and transmit climate data.
+	
+	```
+		Connected to climate-si7020
+		Connected to ble113a.
+	```
 
 1. On your Mac:
 
-	* Open XCode
-	* Plug in your iDevice
-	* Build for your iDevice
+	* Open the project in XCode. It resides in in `PROJECT_DIR/tessel-ble-climate/tessel-ble-climate.xcodeproj`
+	* Plug in your iPhone or iPad. App will not work on the iOS simulator. (See "Requirements and Assumptions > Assumptions" for explanation.)
+	* Build for your iPhone or iPad
+	* Make sure your device has bluetooth turned on. If it's off, your device will present a helpful alert the first time you open the app.
+	* On the app, tap the "Scan" button to search for your Tessel
 
 ## Feature List
 <div id="feature_list"><a href="#user-content-top_of_page">(Back to top)</div>
