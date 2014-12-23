@@ -89,6 +89,7 @@
         }
         case TesselBluetoothStatusDisconnected:
         case TesselBluetoothStatusConnectionFailed:
+        case TesselBluetoothStatusReconnecting:
         {
             self.scanButton.enabled = YES;
             self.killButton.enabled = NO;
