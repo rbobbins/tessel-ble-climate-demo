@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, TesselBluetoothStatus) {
 @required
 - (void)didTurnOnBluetooth;
 - (void)didChangeTesselConnectionStatus;
+- (void)didLogEvent;
 - (void)didReceiveUpdatedTemperature:(NSNumber *)number;
 - (void)didReceiveUpdatedHumidity:(NSNumber *)number;
 @end

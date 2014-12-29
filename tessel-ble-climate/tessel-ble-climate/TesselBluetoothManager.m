@@ -217,6 +217,7 @@ NSString * const kTesselHumidityCharacteristicUUID =    @"21819AB0-C937-4188-B0D
     NSString *timestamp = [self.timestampFormatter stringFromDate:[NSDate date]];
     message = [NSString stringWithFormat:@"%@: %@", timestamp, message];
     [self.logHistory addObject:message];
+    [self.delegate didLogEvent];
 }
 
 @end

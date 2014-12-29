@@ -102,21 +102,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSX-EE-dDb">
-                                        <rect key="frame" x="504" y="4" width="60" height="44"/>
-                                        <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="KUL-xV-JCG"/>
-                                            <constraint firstAttribute="height" constant="44" id="VIq-FC-NPv"/>
-                                        </constraints>
-                                        <state key="normal" title="Refresh"/>
-                                        <connections>
-                                            <action selector="didTapRefreshButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zi2-QC-68q"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ify-Fy-XBt">
-                                        <rect key="frame" x="436" y="4" width="60" height="44"/>
+                                        <rect key="frame" x="500" y="4" width="60" height="44"/>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="27f-qa-lfx"/>
+                                            <constraint firstAttribute="height" constant="44" id="3y7-JT-X4k"/>
+                                        </constraints>
                                         <state key="normal" title="Clear">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -128,21 +120,11 @@
                                 <color key="backgroundColor" red="1" green="0.75808804699999999" blue="0.65203544270000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="DjH-cs-TEP"/>
-                                    <constraint firstItem="fSX-EE-dDb" firstAttribute="height" secondItem="ify-Fy-XBt" secondAttribute="height" id="Fox-8f-NYk"/>
                                     <constraint firstItem="eNT-Cl-ReQ" firstAttribute="leading" secondItem="bly-W0-HBM" secondAttribute="leading" constant="21" id="K5f-tH-s3o"/>
-                                    <constraint firstItem="fSX-EE-dDb" firstAttribute="bottom" secondItem="ify-Fy-XBt" secondAttribute="bottom" constant="7" id="NyT-bO-fj8"/>
+                                    <constraint firstAttribute="trailing" secondItem="ify-Fy-XBt" secondAttribute="trailing" constant="8" id="WQ4-fD-UwI"/>
                                     <constraint firstAttribute="centerY" secondItem="eNT-Cl-ReQ" secondAttribute="centerY" id="YsG-NZ-fri"/>
-                                    <constraint firstItem="fSX-EE-dDb" firstAttribute="width" secondItem="ify-Fy-XBt" secondAttribute="width" id="Z6e-FW-3Uz"/>
-                                    <constraint firstItem="fSX-EE-dDb" firstAttribute="top" secondItem="ify-Fy-XBt" secondAttribute="top" id="aVg-cz-4js"/>
-                                    <constraint firstItem="fSX-EE-dDb" firstAttribute="top" secondItem="bly-W0-HBM" secondAttribute="top" constant="4" id="j2X-43-BfT"/>
-                                    <constraint firstItem="fSX-EE-dDb" firstAttribute="leading" secondItem="ify-Fy-XBt" secondAttribute="trailing" constant="8" symbolic="YES" id="oUX-lQ-3XU"/>
-                                    <constraint firstAttribute="trailing" secondItem="fSX-EE-dDb" secondAttribute="trailing" constant="4" id="qWT-tK-PsD"/>
+                                    <constraint firstAttribute="centerY" secondItem="ify-Fy-XBt" secondAttribute="centerY" id="bvp-uY-iAN"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="NyT-bO-fj8"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDg-Nu-He8" userLabel="Connection Header Container">
                                 <rect key="frame" x="16" y="28" width="568" height="56"/>
@@ -163,6 +145,12 @@
                                             <action selector="didTapScanButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jIX-Vy-347"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYY-m9-s9c">
+                                        <rect key="frame" x="14" y="31" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9C-xY-hTl">
                                         <rect key="frame" x="516" y="5" width="44" height="47"/>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -176,12 +164,6 @@
                                             <action selector="didTapKillButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uD9-Kv-hHD"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYY-m9-s9c">
-                                        <rect key="frame" x="14" y="31" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.75808804699999999" blue="0.65203544270000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

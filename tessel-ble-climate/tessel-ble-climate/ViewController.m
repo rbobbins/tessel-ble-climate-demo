@@ -13,13 +13,13 @@
 @interface ViewController () <TesselBluetoothManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
 @property (weak, nonatomic) IBOutlet UIButton *killButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *currentTemperatureLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentHumidityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *connectionStatusLabel;
 @property (weak, nonatomic) IBOutlet UITableView *logTableView;
 @property (nonatomic) TesselBluetoothManager *bluetoothManager;
 @property (nonatomic) NSNumberFormatter *numberFormatter;
-@property (nonatomic) NSArray *logCache;
 @property (nonatomic) NSTimer *connectionTimer;
 @end
 
@@ -32,7 +32,6 @@
     self.bluetoothManager = [[TesselBluetoothManager alloc] initWithCBCentralManager:centralManager];
     self.bluetoothManager.delegate = self;
     [self didChangeTesselConnectionStatus];
-    
 }
 
 #pragma mark - Actions
@@ -44,12 +43,10 @@
 - (IBAction)didTapKillButton:(id)sender {
     [self.bluetoothManager killConnection];
 }
+
 - (IBAction)didTapClearButton:(id)sender {
     [self.bluetoothManager clearLogHistory];
-    [self updateTableViewData];
-}
-- (IBAction)didTapRefreshButton:(id)sender {
-    [self updateTableViewData];
+    [self.logTableView reloadData];
 }
 
 #pragma mark - <TesselBluetoothManager>
@@ -69,11 +66,14 @@
     self.currentHumidityLabel.text = [NSString stringWithFormat:@"%@ %%", numberString];
 }
 
+- (void)didLogEvent {
+    [self.logTableView reloadData];
+}
+
 - (void)didChangeTesselConnectionStatus {
     [self.connectionTimer invalidate];
     
     // Respond to any change in connection status by resetting labels and updating logs
-    [self updateTableViewData];
     self.currentHumidityLabel.text = @"--";
     self.currentTemperatureLabel.text = @"--";
     
@@ -115,13 +115,13 @@
 #pragma mark <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.logCache.count;
+    return self.bluetoothManager.logHistory.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"cellIdentifier"; //Same as the one defined in storyboard
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    cell.textLabel.text = self.logCache[indexPath.row];
+    cell.textLabel.text = self.bluetoothManager.logHistory[indexPath.row];
     return cell;
 }
 
@@ -129,7 +129,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSString *message = self.logCache[indexPath.row];
+    NSString *message = self.bluetoothManager.logHistory[indexPath.row];
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Log Event Detail"
                                                                              message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
@@ -139,20 +139,6 @@
 }
 
 #pragma mark - Getters and Setters
-
-- (NSArray *)logCache {
-    /*We use a log cache instead of always calling through to the bluetooth manager.
-     This ensures that if a user taps a cell, they'll see an alert with the same
-     message that the cell contains. If we didn't cache, and the bluetooth manager's
-     log history had changed since the time the cell was rendered, the alert would
-     contain a different message than the cell itself.
-     */
-    
-    if (!_logCache) {
-        _logCache = self.bluetoothManager.logHistory;
-    }
-    return _logCache;
-}
 
 - (NSNumberFormatter *)numberFormatter {
     if (!_numberFormatter) {
@@ -165,11 +151,6 @@
 }
 
 #pragma mark - Private
-
-- (void)updateTableViewData {
-    self.logCache = nil;
-    [self.logTableView reloadData];
-}
 
 - (void)askToKeepScanning:(NSTimer *)timer {
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Keep Scanning?"
