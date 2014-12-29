@@ -2,6 +2,7 @@ var tessel = require('tessel');
 
 var climatelib = require('climate-si7020');
 var bleLib = require('ble-ble113a')
+var packetGen = require('bleadvertise');
 
 var climate = climatelib.use(tessel.port['B']);
 var ble = bleLib.use(tessel.port['A']);
@@ -12,8 +13,12 @@ ble.on('ready', function(err) {
 		return console.log(err);
 	} 
 	console.log('Connected to ble113a.');
-
-	ble.startAdvertising();
+	ble.setAdvertisingData(packetGen.serialize({completeName: "Tessel BLE113A Module"}), function(err) {
+		if (err) {
+			return console.log(err);
+		}
+		ble.startAdvertising();
+	})
 });
 
 
